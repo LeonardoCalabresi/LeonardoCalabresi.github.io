@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leonardo J. Calabresi — Economista & Desarrollador Python</title>
+  <meta name="description" content="Portfolio de Leonardo J. Calabresi. Economista y desarrollador Python. Proyectos de análisis de datos, automatización y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1C0A0F;
+      --slate:       #3D1E27;
+      --muted:       #9A7880;
+      --accent:      #7B2138;
+      --accent-mid:  #A63050;
+      --accent-light:#F5EBF0;
+      --border:      rgba(90,20,40,0.12);
+      --bg:          #FAF7F8;
+      --white:       #FFFFFF;
+      --gold:        #C9956A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: var(--white);
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #inicio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-left {
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    .accent-bar {
+      height: 3px;
+      background: var(--accent);
+      width: 40px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 11px 24px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--accent-mid); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 0.5px solid var(--accent);
+      padding: 11px 24px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { background: var(--accent); color: #fff; }
+
+    .hero-right {
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      background: var(--accent-light);
+    }
+
+    .stat-item { border-bottom: 0.5px solid var(--border); padding-bottom: 1.25rem; }
+    .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    /* ── SOBRE MÍ ── */
+    #sobre {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .sobre-label {
+      padding: 4rem 3rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .sobre-content { padding: 4rem 3rem; }
+
+    .sobre-content p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .sobre-content p:last-child { margin-bottom: 0; }
+
+    /* ── SECCIONES GENERALES ── */
+    section { border-bottom: 0.5px solid var(--border); }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 3rem 3rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    .section-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .section-link:hover { opacity: 0.7; }
+
+    /* ── PROYECTOS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 0.5px solid var(--border);
+    }
+
+    .project-card {
+      padding: 2.25rem 2.5rem;
+      border-right: 0.5px solid var(--border);
+      transition: background 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card:last-child { border-right: none; }
+    .project-card:hover { background: var(--accent-light); }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project-footer { margin-top: 1.5rem; display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .pill {
+      font-size: 10px;
+      color: var(--slate);
+      background: #EDE0E3;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    /* ── BLOG ── */
+    .blog-list { padding: 0 3rem 3rem; }
+
+    .blog-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .blog-item:last-child { border-bottom: none; }
+
+    .blog-date { font-size: 12px; color: var(--muted); padding-top: 3px; }
+
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+      line-height: 1.35;
+    }
+
+    .blog-item:hover .blog-title { color: var(--accent); }
+    .blog-excerpt { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACTO ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 3rem 4rem;
+      gap: 4rem;
+    }
+
+    .contact-text { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .contact-email {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-email:hover { opacity: 0.75; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--navy);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      width: 100%;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 3rem;
+      background: var(--navy);
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer-links { display: flex; gap: 1.75rem; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+
+      #inicio { grid-template-columns: 1fr; }
+      .hero-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 0.5px solid var(--border); }
+      .hero-right { padding: 2.5rem 1.5rem; }
+      .hero-name { font-size: 36px; }
+
+      #sobre { grid-template-columns: 1fr; }
+      .sobre-label { padding: 2.5rem 1.5rem 0; border-right: none; }
+      .sobre-content { padding: 1.5rem 1.5rem 2.5rem; }
+
+      .section-header { padding: 2.5rem 1.5rem 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .project-card:last-child { border-bottom: none; }
+
+      .blog-list { padding: 0 1.5rem 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; padding: 0 1.5rem 3rem; gap: 2rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#inicio" class="nav-name">Leonardo J. Calabresi</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#">CV</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="inicio">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Economista · Desarrollador Python</p>
+      <div class="accent-bar"></div>
+      <h1 class="hero-name">Leonardo<br>J. Calabresi</h1>
+      <p class="hero-bio">Combino análisis económico con herramientas de programación para explorar datos, automatizar procesos y construir proyectos que cruzan disciplinas.</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+        <!-- Reemplazá el href con el link real a tu CV -->
+        <a href="#" class="btn-secondary">Descargar CV</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-item">
+        <p class="stat-label">Formación</p>
+        <!-- EDITÁ: tu universidad -->
+        <p class="stat-value">Economista · UBA</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-label">Especialidad</p>
+        <p class="stat-value">Análisis de datos · Python</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-label">Proyectos publicados</p>
+        <!-- EDITÁ: actualizá el número -->
+        <p class="stat-value">2 y contando</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-label">Ubicación</p>
+        <p class="stat-value">Buenos Aires, Argentina</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE MÍ -->
+  <div id="sobre" style="border-bottom: 0.5px solid var(--border);">
+    <div style="display: grid; grid-template-columns: 1fr 1.6fr; border-bottom: none;">
+      <div class="sobre-label" style="padding: 4rem 3rem; border-right: 0.5px solid var(--border);">
+        <h2 class="section-title" style="margin-bottom: 0.75rem;">Sobre mí</h2>
+        <p style="font-size: 13px; color: var(--muted); line-height: 1.7;">Economista con inclinación por los datos y la programación.</p>
+      </div>
+      <div class="sobre-content" style="padding: 4rem 3rem;">
+        <!-- EDITÁ: escribí tu bio -->
+        <p>Soy economista con interés en la intersección entre el análisis cuantitativo y la programación. Uso Python como herramienta principal para trabajar con datos, automatizar tareas y construir proyectos que van desde análisis macroeconómicos hasta experimentos más generales.</p>
+        <p>Este sitio es mi espacio para documentar y compartir lo que voy construyendo. Algunos proyectos son estrictamente de economía; otros son simplemente cosas que me parecieron interesantes de explorar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="section-header">
+      <h2 class="section-title">Proyectos</h2>
+      <!-- Podés linkearlo a una página /proyectos separada -->
+      <a href="#" class="section-link">Ver todos →</a>
+    </div>
+    <div class="projects-grid">
+
+      <!-- PROYECTO 1 — EDITÁ o duplicá este bloque para agregar proyectos -->
+      <a href="https://github.com/tuusuario/repo" target="_blank" class="project-card">
+        <span class="project-tag">Economía</span>
+        <h3 class="project-title">Análisis de inflación con datos del INDEC</h3>
+        <p class="project-desc">Visualización interactiva de series históricas de precios usando pandas y matplotlib.</p>
+        <div class="project-footer">
+          <span class="pill">Python</span>
+          <span class="pill">pandas</span>
+          <span class="pill">matplotlib</span>
+        </div>
+      </a>
+
+      <!-- PROYECTO 2 -->
+      <a href="https://github.com/tuusuario/repo2" target="_blank" class="project-card">
+        <span class="project-tag">Datos</span>
+        <h3 class="project-title">Scraper de indicadores del Banco Central</h3>
+        <p class="project-desc">Automatización de descarga y limpieza de datos monetarios y cambiarios.</p>
+        <div class="project-footer">
+          <span class="pill">Python</span>
+          <span class="pill">requests</span>
+          <span class="pill">BeautifulSoup</span>
+        </div>
+      </a>
+
+      <!-- PROYECTO 3 — placeholder -->
+      <div class="project-card" style="opacity: 0.5; cursor: default;">
+        <span class="project-tag">Próximamente</span>
+        <h3 class="project-title">Tu próximo proyecto aquí</h3>
+        <p class="project-desc">Duplicá uno de los bloques anteriores en el HTML y completá los datos.</p>
+        <div class="project-footer">
+          <span class="pill">Por venir</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="section-header">
+      <h2 class="section-title">Blog</h2>
+      <a href="#" class="section-link">Ver todos →</a>
+    </div>
+    <div class="blog-list">
+
+      <!-- ENTRADA 1 — EDITÁ o duplicá -->
+      <a href="#" class="blog-item">
+        <p class="blog-date">Abr 2026</p>
+        <div>
+          <p class="blog-title">Por qué uso Python como economista</p>
+          <p class="blog-excerpt">Una introducción a cómo la programación puede ampliar el análisis económico más allá de las hojas de cálculo.</p>
+        </div>
+      </a>
+
+      <!-- ENTRADA 2 -->
+      <a href="#" class="blog-item">
+        <p class="blog-date">Mar 2026</p>
+        <div>
+          <p class="blog-title">Primer entrada del blog</p>
+          <p class="blog-excerpt">Artículos sobre economía, datos, y cualquier cosa que encuentre interesante. Sin restricciones temáticas.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="section-header">
+      <h2 class="section-title">Contacto</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-text">Si tenés alguna pregunta sobre mis proyectos, querés colaborar, o simplemente querés charlar sobre datos y economía, escribime.</p>
+        <!-- EDITÁ: tu email real -->
+        <a href="mailto:tu@email.com" class="contact-email">tu@email.com</a>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <input type="text" placeholder="Tu nombre" />
+        <input type="email" placeholder="Tu email" />
+        <textarea rows="5" placeholder="Tu mensaje..."></textarea>
+        <button type="submit" class="btn-primary" style="align-self: flex-start;">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Leonardo J. Calabresi</span>
+    <div class="footer-links">
+      <!-- EDITÁ: tus links reales -->
+      <a href="https://github.com/tuusuario" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/tuperfil" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">CV</a>
+    </div>
+  </footer>
+
+</body>
+</html>
